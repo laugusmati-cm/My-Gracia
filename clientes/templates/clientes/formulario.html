@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <Meta charset="UTF-8">
+  <Meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+  <title>Registrar cliente </title>
+  <link rel="stylesheet" href="{% static 'clientes/css/editar.css' %}">
+ 
+</head>
+<body>
+  <header class="encabezado">
+    <h1>My Gracia</h1>
+    <p> Registrar cliente</p>
+  </header>
+  <main class="contenedor">
+    <section class="tarjeta">
+      <div class="titulo">
+        <h2>Registrar cliente</h2>
+        <p>Ingresar los datos para crear una nueva cuenta</p>
+      </div> 
+      <form method="POST">
+          {% csrf_token %}
+          {% for campo in formulario %}
+            <div class="grupo-campo">
+              {{ campo.label_tag }}
+              {{ campo}}
+              {{campo.errors }}
+            </div>
+          {% endfor%}
+          <div class="botones">
+                    <button type="submit" class="btn-guardar">Registrar cliente</button>
+                    <a href="{% url 'clientes:lista' %}" class="btn-cancelar" %}">Cancelar</a>
+          </div>  
+      </form>
+    </section> 
+  </main> 
+  <footer>
+        <p>@ 2026 My Gracia - todos los derechos reservados</p>
+  </footer>  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

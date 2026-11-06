@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f2f7;
+    color: #444;
+    min-height: 100vh;
+}
+
+.encabezado {
+    background: #8e5b83;
+    color: white;
+    padding: 25px 7%;
+    width: 100%;
+}
+
+.encabezado h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.encabezado p {
+    font-size: 14px;
+}
+ .contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+
+ }
+
+ .tarjeta {
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+ }
+
+ .titulo {
+    text-align: center;
+    margin-bottom: 30px;
+ }
+
+ .titulo h2 {
+    color: #8e5b83;
+    font-size: 27px;
+    margin-bottom: 10px;
+ }
+
+ .titulo p {
+    color: #777;
+    font-size: 14px;
+ }
+
+ .grupo-campo {
+    margin-bottom: 20px;
+ }
+
+ .grupo-campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.grupo-campo input, .grupo-campo select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d8c4d3;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+}
+
+.grupo-campo input :focus, .grupo-campo select :focus {
+    border-color: #a66b98;
+    box-shadow: 0 0 5px rgba(166, 107, 152, 0.3);
+}
+
+.grupo-campo input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #8e5b83;
+}
+
+.error {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-guardar, .btn-cancelar {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-guardar ´{
+    background: #8e5b83;
+    color: white;
+    border: none;
+}
+
+.btn-guardar :hover {
+    background: #704568;
+}
+
+.btn-cancelar {
+    background: #eee7ed;
+    color: #704568;
+}
+
+.btn-cancelar :hover {
+    background: #ded1dc;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 13px;
+}
+
+@media (max-windth: 600px) {
+    .tarjeta {
+        padding: 25px 20px;
+    }
+    .botones {
+        flex-direction: column;
+    }
+}

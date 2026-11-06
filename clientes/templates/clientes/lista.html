@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gracia|Clientes</title>
+<style>
+
+    body{
+        Font-family:Arial,sans-serif;
+        Background:#f8f1f5;
+        Margin:0;
+        Padding:30px;
+        Color:#333;
+    }
+
+    header {
+        Background:#8e456b;
+        Color:white;
+        Padding:22px;
+        Border-radius:12px;
+    }
+
+    .contenedor{
+        Background:white;
+        Margin-top:22px;
+        Padding:22px;
+        Border-radius:12px;
+        Overflow-x: auto;
+    }
+    a, button{
+        Display:inline-block;
+        Padding:9px 13px;
+        Border:0;
+        Border-radius:6px;
+        Text-decoration:nones;
+        Cursor:pointer;
+        Margin: 3px;
+    }
+
+    .nuevo,.editar {
+        Background:#8e456b;
+        Color:white;
+    }    
+    .desactivar {  
+        Background:#a27f7f;
+        Color:white;
+    }
+
+    table{
+        Width: 100%;
+        Border-collapse:collapse;
+        Margin-top:18px;
+    }
+
+    th, td{
+        Border-bottom: 1px solid #ddd;
+        Padding:12px;
+        Text-align:left;
+    }
+
+    th{
+        Background:#f1e1ea;
+    }
+
+    form{
+        Display:inline;
+    }
+</style> 
+
+
+</head>
+<body>
+
+<header>
+    <h1>My Gracia</h1>
+    <p>Administración de clientes</p>
+</header>
+     
+<main class="contenedor">
+    <h2>listado de clientes</h2>
+    <a class = "nuevo" href="{% url 'clientes:crear' %}"> Nuevo cliente </a>
+    {% for mensaje in menssages %}
+        <p class = "mensaje {{ mensaje.tag }}"> {{ mensaje}} </p>
+    {% endfor %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID Cliente</th>
+                <th>Nombre Cliente</th>
+                <th>Correo Cliente</th>
+                <th>Telefono Cliente</th>
+                <th>Fecha de nacimiento</th> 
+                <th>Estado del cliente</th>
+                <th>Acciones</th>
+            </Tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.Id_Cliente }}</td>
+                <td>{{ cliente.Nombre_Cliente }}</td>
+                <td>{{ cliente.usuario.Correo_Usuario }}</td>.    
+                <td>{{ cliente.Telefono_Cliente|default:"No registrado" }}</td>
+                <td>{{ cliente.Fecha_Nacimiento|default:"no registrada" }}</td>
+                <td>
+                    {% if cliente.Estado_Cliente %} 
+                        Activo
+                    {% else %}
+                        Inactivo 
+                    {% endif %}
+                </td>
+                <td>
+                    <a class= "editar"
+                        href= "{% url 'clientes:editar' cliente.Id_Cliente %}">
+                        Editar
+                    </a>
+                    {% if cliente.Estado_Cliente %}
+                        <form method = "post"
+                            action = "{% url 'clientes:desactivar' cliente.Id_Cliente %}">
+                            {% csrf_token %} 
+                            <button class="desactivar" type = submit">
+                                Desactivar
+                            </button>
+                        </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan = "7" >
+                    No hay clientes registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+</Body>
+</Html>
+            
+
+
+
+     
+          
+
+    
